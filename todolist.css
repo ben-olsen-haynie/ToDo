@@ -1,0 +1,51 @@
+h1 {
+    font-family: 'Roboto', sans-serif
+    font-size: 25px;
+    text-align: center;
+}
+
+#listDiv {
+    border: 2px solid black;
+    width: 45%;
+    height: 500px;
+    border-radius: 5px;
+    float: left;
+    overflow: auto;
+}
+
+#completedDiv {
+    border: 2px solid black;
+    width: 45%;
+    height: 500px;
+    border-radius: 5px;
+    float: right;
+}
+
+#button-with-text {
+    display: inline-block;
+    background-color: white;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 95%;
+}
+#text {
+    display: inline-block;
+    /* margin-left: 10px; */
+    box-sizing: border-box;
+    width: 95%;
+}
+
+.listButton {
+    border: 2px solid black;
+    width: 25px;
+    height: 25px;
+    border-radius: 5px;
+}
+#appendButton {
+    position: absolute;
+    margin-left: 10px;
+    bottom: 100px;
+}
