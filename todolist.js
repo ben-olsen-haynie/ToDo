@@ -26,7 +26,7 @@ appendButton.addEventListener("click", function(addingEntree) {
     const newContent = buttonWithText.cloneNode(true);
     newDiv.appendChild(newContent);
     listDiv.appendChild(newDiv);
-    newContent.lastChild.innerHTML = "";
+    newContent
 
     // textBox.value = "";
 
