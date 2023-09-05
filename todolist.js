@@ -22,10 +22,34 @@ button.addEventListener("click", function(resetButtonTextBox) {
 
 let appendButton = document.getElementById("appendButton");
 appendButton.addEventListener("click", function(addingEntree) {
-    const newDiv = document.createElement("div");
-    const newContent = buttonWithText.cloneNode(true);
+    const newDiv = document.createElement("div");  // wrapping everything with an extra div. you could skip this and just append the cloned node
+    // const newContent = buttonWithText.cloneNode(true); 
     newDiv.appendChild(newContent);
-    listDiv.appendChild(newDiv);
+    // creat html string with div that contains button and input
+    // insert adjacent html to add the above html to the list
+    var newListDivNode = listDiv.appendChild(newDiv);  // appendChild method returns handle to the new node - so capture that in new variable
+    newListDivNode.firstElementChild.lastElementChild.value = "";  // lastChild was finding a spurious text node, so use lastElementChild instead
+    // firstElementChild in the above line is necessary because you are wrapping everything in an extra div
+
+    // new cloned buttons were not working because you hadn't added event listeners to the new buttons
+    // in general cloning doesn't include event listeners
+    // i copied and combined and tweaked your button.addEventListeners above
+
+    newListDivNode.firstElementChild.firstElementChild.addEventListener("click", function() {
+        // copy task to completed list
+        var content = newListDivNode.firstElementChild.lastElementChild.value;
+        const newCompletedListNode = document.createElement("div");
+        const newCompletedListNodeContent = document.createTextNode(content);
+        newCompletedListNode.appendChild(newCompletedListNodeContent);
+        const completedDiv = document.getElementById("completedDiv");
+        completedDiv.appendChild(newCompletedListNode);
+
+        // reset button text box
+        // var buttonReset = document.getElementById("listbutton");  //  this was not getting used
+        // var textReset = document.getElementById("text");  // we don't need to look this up by Id - we already have it saved in newNewDiv    
+        newListDivNode.firstElementChild.lastElementChild.value = "";        
+    });
+
 
     // textBox.value = "";
 
