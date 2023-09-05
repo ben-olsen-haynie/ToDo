@@ -2,23 +2,23 @@ var button = document.getElementById("listButton");
 var buttonWithText = document.getElementById("button-with-text")
 var listDiv = document.getElementById("listDiv");
 
-button.addEventListener("click", function(textAppearInDiv2) {
-    var content = document.getElementById("text").value;
-    const newDiv = document.createElement("div");
-    const newContent = document.createTextNode(content);
-    newDiv.appendChild(newContent);
-    const completedDiv = document.getElementById("completedDiv");
-    completedDiv.appendChild(newDiv);
+// button.addEventListener("click", function(textAppearInDiv2) {
+//     var content = document.getElementById("text").value;
+//     const newDiv = document.createElement("div");
+//     const newContent = document.createTextNode(content);
+//     newDiv.appendChild(newContent);
+//     const completedDiv = document.getElementById("completedDiv");
+//     completedDiv.appendChild(newDiv);
 
-    // completedDiv.appendChild(document.createTextNode(content));
-    // content = document.getElementById("completedDiv").textContent;
-});
+//     // completedDiv.appendChild(document.createTextNode(content));
+//     // content = document.getElementById("completedDiv").textContent;
+// });
 
-button.addEventListener("click", function(resetButtonTextBox) {
-    var buttonReset = document.getElementById("listbutton");
-    var textReset = document.getElementById("text");
-    textReset.value = "";
-});
+// button.addEventListener("click", function(resetButtonTextBox) {
+//     var buttonReset = document.getElementById("listbutton");
+//     var textReset = document.getElementById("text");
+//     textReset.value = "";
+// });
 
 let appendButton = document.getElementById("appendButton");
 appendButton.addEventListener("click", function(addingEntree) {
@@ -26,7 +26,15 @@ appendButton.addEventListener("click", function(addingEntree) {
     // const newContent = buttonWithText.cloneNode(true); 
     newDiv.appendChild(newContent);
     // creat html string with div that contains button and input
+    // "<div id="button-with-text"> <Button id="listButton" class="listButton"></Button> <input type="text" id="text"></input></div>"
     // insert adjacent html to add the above html to the list
+    let html = `
+    <div id="button-with-text">
+        <Button id="listButton" class="listButton"></Button>
+        <input type="text" id="text"></input>
+    </div>
+`;
+    listDiv.insertAdjacentHTML("afterbegin", html )
     var newListDivNode = listDiv.appendChild(newDiv);  // appendChild method returns handle to the new node - so capture that in new variable
     newListDivNode.firstElementChild.lastElementChild.value = "";  // lastChild was finding a spurious text node, so use lastElementChild instead
     // firstElementChild in the above line is necessary because you are wrapping everything in an extra div
